@@ -1,5 +1,9 @@
-github.com/bersennaidoo/lib v0.0.0-20230923113853-ac3059f457ae h1:IvTdkrj2m7LRoxMO9QnfYnxIt2KAMQA9otgzlFYxVjI=
-github.com/bersennaidoo/lib v0.0.0-20230923113853-ac3059f457ae/go.mod h1:MMyhFXGjfzfadJa5DxPyeHna6GPi0yBvSo5TkCHIky8=
+github.com/bersennaidoo/lib v0.0.0-20230923155454-0bce10a65979 h1:v5kLKfClh48NzPfE4kDx0cgEsQ02vkibxr59EhIQefY=
+github.com/bersennaidoo/lib v0.0.0-20230923155454-0bce10a65979/go.mod h1:MMyhFXGjfzfadJa5DxPyeHna6GPi0yBvSo5TkCHIky8=
+github.com/bersennaidoo/lib v0.0.1 h1:/MEHQnUTCFL4jbIg/SU3UA4K7wmiTKieU6X0rRrXsYo=
+github.com/bersennaidoo/lib v0.0.1/go.mod h1:D0koRMLEHGNgGiN985YXEZvWYKJYGyvxPhkG7wIMzyQ=
+github.com/bersennaidoo/lib v0.0.2 h1:bOwgz4c/MWtA8A++9lOWxx1ob+EWFwj2KirklN+Gh/s=
+github.com/bersennaidoo/lib v0.0.2/go.mod h1:D0koRMLEHGNgGiN985YXEZvWYKJYGyvxPhkG7wIMzyQ=
 github.com/coreos/go-systemd/v22 v22.5.0/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
 github.com/godbus/dbus/v5 v5.0.4/go.mod h1:xhWf0FNVPg57R7Z0UbKHbJfkEywrmjJnf7w5xrFpKfA=
 github.com/kelseyhightower/envconfig v1.4.0 h1:Im6hONhd3pLkfDFsbRgu68RDNkGF1r3dvMUtDTo2cv8=
