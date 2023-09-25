@@ -1,9 +1,9 @@
-github.com/bersennaidoo/lib v0.0.0-20230923155454-0bce10a65979 h1:v5kLKfClh48NzPfE4kDx0cgEsQ02vkibxr59EhIQefY=
-github.com/bersennaidoo/lib v0.0.0-20230923155454-0bce10a65979/go.mod h1:MMyhFXGjfzfadJa5DxPyeHna6GPi0yBvSo5TkCHIky8=
-github.com/bersennaidoo/lib v0.0.1 h1:/MEHQnUTCFL4jbIg/SU3UA4K7wmiTKieU6X0rRrXsYo=
-github.com/bersennaidoo/lib v0.0.1/go.mod h1:D0koRMLEHGNgGiN985YXEZvWYKJYGyvxPhkG7wIMzyQ=
-github.com/bersennaidoo/lib v0.0.2 h1:bOwgz4c/MWtA8A++9lOWxx1ob+EWFwj2KirklN+Gh/s=
-github.com/bersennaidoo/lib v0.0.2/go.mod h1:D0koRMLEHGNgGiN985YXEZvWYKJYGyvxPhkG7wIMzyQ=
+github.com/bersennaidoo/lib v0.0.3 h1:voIp0Dr+/SVOp1Q2I2CGwxDTNltv3Fd/qlmGw7W5XOw=
+github.com/bersennaidoo/lib v0.0.3/go.mod h1:5zEigK65qENr3SfPXAjWOhcavaai09oHDi3MP2CUy9E=
+github.com/bersennaidoo/lib v0.0.4 h1:XEsBgjqqFSNc9WeSUGNgqZpf/WWOckvXhA5gEsYId6o=
+github.com/bersennaidoo/lib v0.0.4/go.mod h1:5zEigK65qENr3SfPXAjWOhcavaai09oHDi3MP2CUy9E=
+github.com/bersennaidoo/lib v0.0.5 h1:hwfqY+qgdRDPMRU3ce3HmMuZBpASqEQwPrprcy+A52c=
+github.com/bersennaidoo/lib v0.0.5/go.mod h1:5zEigK65qENr3SfPXAjWOhcavaai09oHDi3MP2CUy9E=
 github.com/coreos/go-systemd/v22 v22.5.0/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
 github.com/godbus/dbus/v5 v5.0.4/go.mod h1:xhWf0FNVPg57R7Z0UbKHbJfkEywrmjJnf7w5xrFpKfA=
 github.com/julienschmidt/httprouter v1.3.0 h1:U0609e9tgbseu3rBINet9P48AI/D3oJs4dN7jwJOQ1U=
@@ -22,5 +22,8 @@ github.com/rs/zerolog v1.30.0/go.mod h1:/tk+P47gFdPXq4QYjvCmT5/Gsug2nagsFWBWhAiS
 github.com/stackus/dotenv v0.0.0-20221206033122-02295762494b h1:/3yHnKZ62k34OrQVScJCZM2qax7khmkAHwT/5lrlHUU=
 github.com/stackus/dotenv v0.0.0-20221206033122-02295762494b/go.mod h1:+zTLFeTOJkiI6favYN9c9q2u9/kGbV57iIPbgkLVWrU=
 golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
-golang.org/x/sys v0.0.0-20210927094055-39ccf1dd6fa6 h1:foEbQz/B0Oz6YIqu/69kfXPYeFQAuuMYFkjaqXzl5Wo=
 golang.org/x/sys v0.0.0-20210927094055-39ccf1dd6fa6/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+golang.org/x/sys v0.12.0 h1:CM0HF96J0hcLAwsHPJZjfdNzs0gftsLfgKt57wWHJ0o=
+golang.org/x/sys v0.12.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+gopkg.in/natefinch/lumberjack.v2 v2.2.1 h1:bBRl1b0OH9s/DuPhuXpNl+VtCaJXFZ5/uEFST95x9zc=
+gopkg.in/natefinch/lumberjack.v2 v2.2.1/go.mod h1:YD8tP3GAjkrDg1eZH7EGmyESg/lsYskCTPBJVb9jqSc=
