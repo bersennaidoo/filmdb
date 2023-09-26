@@ -1,6 +1,0 @@
-{"level":"info","time":1695564601880,"message":"starting production server on :3000"}
-{"level":"info","time":1695564601880,"message":"[LISTEN GET /v1/healthcheck]"}
-{"level":"info","time":1695564601880,"message":"[LISTEN POST /v1/movies]"}
-{"level":"info","time":1695564601880,"message":"[LISTEN GET /v1/movies/:id]"}
-{"level":"info","time":1695564607031,"message":"[REQUEST] [curl/7.81.0] [GET] [localhost:3000] [/v1/movies/missging]"}
-{"level":"info","error":"invalid id parameter","time":1695564607031,"message":"[RESPONSE] [404]"}

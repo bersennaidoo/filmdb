@@ -21,7 +21,7 @@ func (app *Application) showMovieHandler(w http.ResponseWriter, r *http.Request)
 	if err != nil || id < 1 {
 		app.Status = http.StatusNotFound
 		app.Err = err
-		http.NotFound(w, r)
+		app.notFoundResponse(w, r)
 		return
 	}
 
@@ -36,9 +36,8 @@ func (app *Application) showMovieHandler(w http.ResponseWriter, r *http.Request)
 
 	err = app.Middleware.WriteJSON(w, http.StatusOK, middleware.Envelope{"movie": movie}, nil)
 	if err != nil {
-		app.Err = err
-		http.Error(w, "The server encountered a problem and could not process your request",
-			http.StatusInternalServerError)
+		app.Status = http.StatusInternalServerError
+		app.serverErrorResponse(w, r, err)
 	}
 
 	app.Status = http.StatusOK

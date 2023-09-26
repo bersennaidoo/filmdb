@@ -20,9 +20,7 @@ func (app *Application) healthcheckHandler(w http.ResponseWriter, r *http.Reques
 	if err != nil {
 		app.Status = http.StatusInternalServerError
 		app.Err = err
-		http.Error(w, "The server encountered a problem and could not process your request",
-			http.StatusInternalServerError)
-		return
+		app.serverErrorResponse(w, r, err)
 	}
 
 	app.Status = http.StatusOK

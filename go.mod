@@ -6,6 +6,7 @@ require (
 	github.com/bersennaidoo/lib v0.0.5
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/rs/zerolog v1.30.0
+	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 )
 
 require (
@@ -15,5 +16,4 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/stackus/dotenv v0.0.0-20221206033122-02295762494b // indirect
 	golang.org/x/sys v0.12.0 // indirect
-	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 )
