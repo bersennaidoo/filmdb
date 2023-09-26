@@ -1,6 +1,7 @@
 package rest
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
 	"time"
@@ -11,8 +12,37 @@ import (
 
 func (app *Application) createMovieHandler(w http.ResponseWriter, r *http.Request) {
 
+	var input struct {
+		Title   string             `json:"title"`
+		Year    int32              `json:"year"`
+		Runtime middleware.Runtime `json:"runtime"`
+		Genres  []string           `json:"genres"`
+	}
+
+	err := app.Middleware.ReadJSON(w, r, &input)
+	if err != nil {
+		app.Status = http.StatusBadRequest
+		app.Err = err
+		app.badRequestResponse(w, r, err)
+		return
+	}
+
+	movie := &models.Movie{
+		Title:   input.Title,
+		Year:    input.Year,
+		Runtime: input.Runtime,
+		Genres:  input.Genres,
+	}
+
+	if models.ValidateMovie(app.Middleware.Validator, movie); !app.Middleware.Validator.Valid() {
+		app.Status = http.StatusUnprocessableEntity
+		app.Err = errors.New("validation failed")
+		app.failedValidationResponse(w, r, app.Middleware.Validator.Errors)
+		return
+	}
+
 	app.Status = http.StatusCreated
-	fmt.Fprintln(w, "create a new movie")
+	fmt.Fprintf(w, "%+v\n", input)
 }
 
 func (app *Application) showMovieHandler(w http.ResponseWriter, r *http.Request) {
@@ -37,6 +67,7 @@ func (app *Application) showMovieHandler(w http.ResponseWriter, r *http.Request)
 	err = app.Middleware.WriteJSON(w, http.StatusOK, middleware.Envelope{"movie": movie}, nil)
 	if err != nil {
 		app.Status = http.StatusInternalServerError
+		app.Err = err
 		app.serverErrorResponse(w, r, err)
 	}
 

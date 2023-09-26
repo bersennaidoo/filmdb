@@ -18,7 +18,7 @@ func (app *Application) logRequest(next http.Handler) http.Handler {
 			return
 		}
 
-		if app.Status == 404 || app.Status == 401 {
+		if app.Status == 404 || app.Status == 401 || app.Status == 422 {
 
 			app.Logger.Error().Err(app.Err).Msgf("[RESPONSE] [%s] [%d]", r.Proto, app.Status)
 

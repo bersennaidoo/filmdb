@@ -3,7 +3,7 @@ module github.com/bersennaidoo/filmdb
 go 1.21.0
 
 require (
-	github.com/bersennaidoo/lib v0.0.5
+	github.com/bersennaidoo/lib v0.0.8
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/rs/zerolog v1.30.0
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1

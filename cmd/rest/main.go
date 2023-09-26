@@ -10,7 +10,9 @@ import (
 func main() {
 	cfg, _ := config.InitConfig()
 
-	mid := middleware.New()
+	valid := middleware.NewValidator()
+
+	mid := middleware.New(valid)
 
 	trace := logger.TRACE
 
