@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/bersennaidoo/filmdb/internal/transport/rest"
 	"github.com/bersennaidoo/lib/pkg/infrastructure/config"
+	"github.com/bersennaidoo/lib/pkg/infrastructure/connections"
 	"github.com/bersennaidoo/lib/pkg/infrastructure/logger"
 	"github.com/bersennaidoo/lib/pkg/middleware"
 )
@@ -22,6 +23,15 @@ func main() {
 	}
 
 	zlog := logger.NewZeroLoggerSrv(zcfg)
+
+	db, err := connections.OpenPGDB(cfg)
+	if err != nil {
+		zlog.Error().Err(err).Msg("")
+	}
+
+	defer db.Close()
+
+	zlog.Info().Msg("database connection pool established")
 
 	app := rest.Application{
 		Config:     cfg,

@@ -12,14 +12,9 @@ import (
 
 func (app *Application) createMovieHandler(w http.ResponseWriter, r *http.Request) {
 
-	var input struct {
-		Title   string             `json:"title"`
-		Year    int32              `json:"year"`
-		Runtime middleware.Runtime `json:"runtime"`
-		Genres  []string           `json:"genres"`
-	}
+	req := ProduceRequest{}
 
-	err := app.Middleware.ReadJSON(w, r, &input)
+	err := app.Middleware.ReadJSON(w, r, &req)
 	if err != nil {
 		app.Status = http.StatusBadRequest
 		app.Err = err
@@ -28,10 +23,10 @@ func (app *Application) createMovieHandler(w http.ResponseWriter, r *http.Reques
 	}
 
 	movie := &models.Movie{
-		Title:   input.Title,
-		Year:    input.Year,
-		Runtime: input.Runtime,
-		Genres:  input.Genres,
+		Title:   req.Title,
+		Year:    req.Year,
+		Runtime: req.Runtime,
+		Genres:  req.Genres,
 	}
 
 	if models.ValidateMovie(app.Middleware.Validator, movie); !app.Middleware.Validator.Valid() {
@@ -42,7 +37,7 @@ func (app *Application) createMovieHandler(w http.ResponseWriter, r *http.Reques
 	}
 
 	app.Status = http.StatusCreated
-	fmt.Fprintf(w, "%+v\n", input)
+	fmt.Fprintf(w, "%+v\n", req)
 }
 
 func (app *Application) showMovieHandler(w http.ResponseWriter, r *http.Request) {
