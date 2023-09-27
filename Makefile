@@ -21,3 +21,9 @@ upgrade-go: # <5>
 
 build:
 	go build -o rest cmd/rest/main.go
+
+migrateup:
+	migrate -path=./pkg/migrations -database="postgresql://bersen:bersen@localhost/filmdb" up
+
+migratedown:
+	migrate -path=./pkg/migrations -database="postgresql://bersen:bersen@localhost/filmdb" down 
