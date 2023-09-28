@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/bersennaidoo/filmdb/internal/service/storage"
 	"github.com/bersennaidoo/filmdb/internal/transport/rest"
 	"github.com/bersennaidoo/lib/pkg/infrastructure/config"
 	"github.com/bersennaidoo/lib/pkg/infrastructure/connections"
@@ -27,16 +28,25 @@ func main() {
 	db, err := connections.OpenPGDB(cfg)
 	if err != nil {
 		zlog.Error().Err(err).Msg("")
+		panic("can't connect to database")
 	}
 
 	defer db.Close()
 
-	zlog.Info().Msg("database connection pool established")
+	if err == nil {
+
+		zlog.Info().Msg("database connection pool established")
+	}
+
+	pgstore := storage.NewPGStore(db)
+
+	storage := storage.New(pgstore)
 
 	app := rest.Application{
 		Config:     cfg,
 		Logger:     zlog,
 		Middleware: mid,
+		Storage:    storage,
 	}
 
 	app.ServerRun()

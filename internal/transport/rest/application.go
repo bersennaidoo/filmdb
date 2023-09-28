@@ -1,6 +1,7 @@
 package rest
 
 import (
+	"github.com/bersennaidoo/filmdb/internal/service/storage"
 	"github.com/bersennaidoo/lib/pkg/infrastructure/config"
 	"github.com/bersennaidoo/lib/pkg/middleware"
 	"github.com/rs/zerolog"
@@ -14,4 +15,5 @@ type Application struct {
 	Middleware *middleware.MiddleWare
 	Status     int
 	Err        error
+	Storage    *storage.Storage
 }

@@ -36,8 +36,25 @@ func (app *Application) createMovieHandler(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
+	err = app.Storage.PGStore.Insert(movie)
+	if err != nil {
+		app.Status = http.StatusInternalServerError
+		app.Err = err
+		app.serverErrorResponse(w, r, err)
+		return
+	}
+
+	headers := make(http.Header)
+	headers.Set("Location", fmt.Sprintf("/v1/movies/%d", movie.ID))
+
+	err = app.Middleware.WriteJSON(w, http.StatusCreated, middleware.Envelope{"movie": movie}, headers)
+	if err != nil {
+		app.Status = http.StatusInternalServerError
+		app.Err = err
+		app.serverErrorResponse(w, r, err)
+	}
+
 	app.Status = http.StatusCreated
-	fmt.Fprintf(w, "%+v\n", req)
 }
 
 func (app *Application) showMovieHandler(w http.ResponseWriter, r *http.Request) {
