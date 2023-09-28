@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"time"
 
 	"github.com/bersennaidoo/filmdb/internal/domain/models"
+	"github.com/bersennaidoo/filmdb/internal/service/storage"
 	"github.com/bersennaidoo/lib/pkg/middleware"
 )
 
@@ -67,13 +67,19 @@ func (app *Application) showMovieHandler(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
-	movie := models.Movie{
-		ID:        id,
-		CreatedAt: time.Now(),
-		Title:     "Casablanca",
-		Runtime:   102,
-		Genres:    []string{"drama", "romance", "war"},
-		Version:   1,
+	movie, err := app.Storage.PGStore.Get(id)
+	if err != nil {
+		switch {
+		case errors.Is(err, storage.ErrRecordNotFound):
+			app.Status = http.StatusNotFound
+			app.Err = err
+			app.notFoundResponse(w, r)
+		default:
+			app.Status = http.StatusInternalServerError
+			app.Err = err
+			app.serverErrorResponse(w, r, err)
+		}
+		return
 	}
 
 	err = app.Middleware.WriteJSON(w, http.StatusOK, middleware.Envelope{"movie": movie}, nil)
