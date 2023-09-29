@@ -19,11 +19,23 @@ upgrade-go: # <5>
 	sudo tar -C /usr/local -xzf go$(GO_VERSION).linux-amd64.tar.gz
 	rm go$(GO_VERSION).linux-amd64.tar.gz
 
-build:
-	go build -o rest cmd/rest/main.go
-
 migrateup:
 	migrate -path=./pkg/migrations -database="postgresql://bersen:bersen@localhost/filmdb" up
 
 migratedown:
 	migrate -path=./pkg/migrations -database="postgresql://bersen:bersen@localhost/filmdb" down 
+
+build:
+	go build -o api cmd/rest/main.go
+
+test:
+	go test ./... -coverprofile=coverage.out
+
+coverage:
+	go tool cover -func coverage.out | grep "total:" | awk '{print ((int($$3) > 80) != 1) }'
+
+report:
+	go tool cover -html=coverage.out -o cover.html
+
+check-format:
+	test -z $$(go fmt ./...)

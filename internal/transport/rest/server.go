@@ -24,5 +24,5 @@ func (app *Application) ServerRun() {
 
 	err := srv.ListenAndServe()
 
-	app.Logger.Info().Err(err).Msgf("%w", err)
+	app.Logger.Info().Err(err).Msg("")
 }
