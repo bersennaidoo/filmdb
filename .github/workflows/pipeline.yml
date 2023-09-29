@@ -67,7 +67,7 @@ jobs:
     - name: Copy Files #
       run: |
            mkdir  artifacts
-           cp rest artifacts/.
+           cp api artifacts/.
 
     - name: Archive #
       uses: actions/upload-artifact@v2
