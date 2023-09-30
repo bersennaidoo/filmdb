@@ -9,7 +9,7 @@ func (app *Application) ServerRun() {
 
 	srv := &http.Server{
 		Addr:         app.Config.Server.Conn,
-		Handler:      app.routes(),
+		Handler:      app.Routes(),
 		IdleTimeout:  time.Minute,
 		ReadTimeout:  10 * time.Second,
 		WriteTimeout: 30 * time.Second,
