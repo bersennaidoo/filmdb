@@ -1,6 +1,7 @@
 package storage_test
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/bersennaidoo/filmdb/internal/domain/models"
@@ -57,6 +58,20 @@ func TestDeleteUnit(t *testing.T) {
 		err := pgstore.Delete(id)
 
 		require.Nil(t, err)
+		pgstore.AssertExpectations(t)
+	})
+
+	t.Run("returns error when trying to delete non-existent movie", func(t *testing.T) {
+
+		id := int64(-1)
+
+		pgstore := mocks.NewStorer(t)
+
+		pgstore.On("Delete", id).Return(errors.New("")).Once()
+
+		err := pgstore.Delete(id)
+
+		require.NotNil(t, err)
 		pgstore.AssertExpectations(t)
 	})
 }

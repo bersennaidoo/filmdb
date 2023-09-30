@@ -14,27 +14,27 @@ type Rester struct {
 }
 
 // createMovieHandler provides a mock function with given fields: w, r
-func (_m *Rester) createMovieHandler(w http.ResponseWriter, r *http.Request) {
+func (_m *Rester) CreateMovieHandler(w http.ResponseWriter, r *http.Request) {
 	_m.Called(w, r)
 }
 
 // deleteMovieHandler provides a mock function with given fields: w, r
-func (_m *Rester) deleteMovieHandler(w http.ResponseWriter, r *http.Request) {
+func (_m *Rester) DeleteMovieHandler(w http.ResponseWriter, r *http.Request) {
 	_m.Called(w, r)
 }
 
 // healthcheckHandler provides a mock function with given fields: w, r
-func (_m *Rester) healthcheckHandler(w http.ResponseWriter, r *http.Request) {
+func (_m *Rester) HealthcheckHandler(w http.ResponseWriter, r *http.Request) {
 	_m.Called(w, r)
 }
 
 // showMovieHandler provides a mock function with given fields: w, r
-func (_m *Rester) showMovieHandler(w http.ResponseWriter, r *http.Request) {
+func (_m *Rester) ShowMovieHandler(w http.ResponseWriter, r *http.Request) {
 	_m.Called(w, r)
 }
 
 // updateMovieHandler provides a mock function with given fields: w, r
-func (_m *Rester) updateMovieHandler(w http.ResponseWriter, r *http.Request) {
+func (_m *Rester) UpdateMovieHandler(w http.ResponseWriter, r *http.Request) {
 	_m.Called(w, r)
 }
 
