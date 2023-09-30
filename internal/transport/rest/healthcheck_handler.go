@@ -6,7 +6,7 @@ import (
 	"github.com/bersennaidoo/lib/pkg/middleware"
 )
 
-func (app *Application) healthcheckHandler(w http.ResponseWriter, r *http.Request) {
+func (app *Application) HealthcheckHandler(w http.ResponseWriter, r *http.Request) {
 
 	env := middleware.Envelope{
 		"status": "available",

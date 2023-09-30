@@ -41,7 +41,7 @@ func TestDeleteMovieHandlerUnit(t *testing.T) {
 		expected := http.StatusOK
 
 		rr := httptest.NewRecorder()
-		req, _ := http.NewRequest("DELETE", "/v1/movies/:id", nil)
+		req, _ := http.NewRequest("DELETE", "/v1/movies/1", nil)
 		appmock.On("DeleteMovieHandler", rr, req).Return(expected).Once()
 
 		handler.ServeHTTP(rr, req)
@@ -83,7 +83,7 @@ func TestShowMovieHandlerUnit(t *testing.T) {
 		expected := http.StatusOK
 
 		rr := httptest.NewRecorder()
-		req, _ := http.NewRequest("GET", "/v1/movies/:id", nil)
+		req, _ := http.NewRequest("GET", "/v1/movies/1", nil)
 		appmock.On("ShowMovieHandler", rr, req).Return(expected).Once()
 
 		handler.ServeHTTP(rr, req)
@@ -104,7 +104,7 @@ func TestUpdateMovieHandlerUnit(t *testing.T) {
 		expected := http.StatusOK
 
 		rr := httptest.NewRecorder()
-		req, _ := http.NewRequest("PUT", "/v1/movies/:id", nil)
+		req, _ := http.NewRequest("PUT", "/v1/movies/1", nil)
 		appmock.On("UpdateMovieHandler", rr, req).Return(expected).Once()
 
 		handler.ServeHTTP(rr, req)

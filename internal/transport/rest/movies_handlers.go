@@ -10,7 +10,7 @@ import (
 	"github.com/bersennaidoo/lib/pkg/middleware"
 )
 
-func (app *Application) createMovieHandler(w http.ResponseWriter, r *http.Request) {
+func (app *Application) CreateMovieHandler(w http.ResponseWriter, r *http.Request) {
 
 	req := ProduceRequest{}
 
@@ -57,7 +57,7 @@ func (app *Application) createMovieHandler(w http.ResponseWriter, r *http.Reques
 	app.Status = http.StatusCreated
 }
 
-func (app *Application) showMovieHandler(w http.ResponseWriter, r *http.Request) {
+func (app *Application) ShowMovieHandler(w http.ResponseWriter, r *http.Request) {
 
 	id, err := app.readIDParam(r)
 	if err != nil || id < 1 {
@@ -92,7 +92,7 @@ func (app *Application) showMovieHandler(w http.ResponseWriter, r *http.Request)
 	app.Status = http.StatusOK
 }
 
-func (app *Application) updateMovieHandler(w http.ResponseWriter, r *http.Request) {
+func (app *Application) UpdateMovieHandler(w http.ResponseWriter, r *http.Request) {
 
 	id, err := app.readIDParam(r)
 	if err != nil {
@@ -157,7 +157,7 @@ func (app *Application) updateMovieHandler(w http.ResponseWriter, r *http.Reques
 	app.Status = http.StatusOK
 }
 
-func (app *Application) deleteMovieHandler(w http.ResponseWriter, r *http.Request) {
+func (app *Application) DeleteMovieHandler(w http.ResponseWriter, r *http.Request) {
 
 	id, err := app.readIDParam(r)
 	if err != nil {
