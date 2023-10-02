@@ -1,5 +1,7 @@
 GO_VERSION := 1.21  # <1>
 
+
+
 .PHONY: install-go init-go
 
 setup: install-go init-go # <2>
@@ -20,13 +22,17 @@ upgrade-go: # <5>
 	rm go$(GO_VERSION).linux-amd64.tar.gz
 
 migrateup:
-	migrate -path=./pkg/migrations -database="postgresql://bersen:bersen@localhost/filmdb" up
+	migrate -path=./pkg/migrations -database="postgresql://bersen:bersen@localhost/filmdb?sslmode=disable" up
 
 migratedown:
 	migrate -path=./pkg/migrations -database="postgresql://bersen:bersen@localhost/filmdb" down 
 
 build:
 	go build -o api cmd/rest/main.go
+
+
+postgres:
+	docker run --name postgres -p 5432:5432 -e POSTGRES_USER=bersen -e POSTGRES_PASSWORD=bersen -d postgres:latest
 
 test:
 	go test ./... -coverprofile=coverage.out

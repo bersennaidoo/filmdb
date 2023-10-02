@@ -117,7 +117,7 @@ func (app *Application) UpdateMovieHandler(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
-	reqBody := ProduceRequest{}
+	reqBody := PatchRequest{}
 
 	err = app.Middleware.ReadJSON(w, r, &reqBody)
 	if err != nil {
@@ -127,10 +127,21 @@ func (app *Application) UpdateMovieHandler(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
-	movie.Title = reqBody.Title
-	movie.Year = reqBody.Year
-	movie.Runtime = reqBody.Runtime
-	movie.Genres = reqBody.Genres
+	if reqBody.Title != nil {
+		movie.Title = *reqBody.Title
+	}
+
+	if reqBody.Year != nil {
+		movie.Year = *reqBody.Year
+	}
+
+	if reqBody.Runtime != nil {
+		movie.Runtime = *reqBody.Runtime
+	}
+
+	if reqBody.Genres != nil {
+		movie.Genres = reqBody.Genres
+	}
 
 	if models.ValidateMovie(app.Middleware.Validator, movie); !app.Middleware.Validator.Valid() {
 		app.Status = http.StatusBadRequest
@@ -141,9 +152,16 @@ func (app *Application) UpdateMovieHandler(w http.ResponseWriter, r *http.Reques
 
 	err = app.Storage.PGStore.Update(movie)
 	if err != nil {
-		app.Status = http.StatusInternalServerError
-		app.Err = err
-		app.serverErrorResponse(w, r, err)
+		switch {
+		case error.Is(err, storage.ErrEditConflict):
+			app.Status = http.StatusConflict
+			app.Err = err
+			app.editConflictResponse(w, r)
+		default:
+			app.Status = http.StatusInternalServerError
+			app.Err = err
+			app.serverErrorResponse(w, r, err)
+		}
 		return
 	}
 

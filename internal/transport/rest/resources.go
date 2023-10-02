@@ -8,3 +8,10 @@ type ProduceRequest struct {
 	Runtime middleware.Runtime `json:"runtime"`
 	Genres  []string           `json:"genres"`
 }
+
+type PatchRequest struct {
+	Title   *string             `json:"title"`
+	Year    *int32              `json:"year"`
+	Runtime *middleware.Runtime `json:"runtime"`
+	Genres  []string            `json:"genres"`
+}
